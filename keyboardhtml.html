@@ -1,0 +1,71 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Onscreen Keyboard with Prediction</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="keyboard-container">
+            <!-- Text Display Area -->
+            <input type="text" class="output form-control" id="output" placeholder="Type here..." readonly>
+
+            <!-- Prediction Suggestions -->
+            <div id="predictions" class="predictions"></div>
+
+            <!-- Keyboard Area -->
+            <div class="keyboard">
+                <!-- Row 1 -->
+                <div class="keyboard-row">
+                    <button class="key" onclick="typeKey('q')">q</button>
+                    <button class="key" onclick="typeKey('w')">w</button>
+                    <button class="key" onclick="typeKey('e')">e</button>
+                    <button class="key" onclick="typeKey('r')">r</button>
+                    <button class="key" onclick="typeKey('t')">t</button>
+                    <button class="key" onclick="typeKey('y')">y</button>
+                    <button class="key" onclick="typeKey('u')">u</button>
+                    <button class="key" onclick="typeKey('i')">i</button>
+                    <button class="key" onclick="typeKey('o')">o</button>
+                    <button class="key" onclick="typeKey('p')">p</button>
+                </div>
+                <!-- Row 2 -->
+                <div class="keyboard-row">
+                    <button class="key" onclick="typeKey('a')">a</button>
+                    <button class="key" onclick="typeKey('s')">s</button>
+                    <button class="key" onclick="typeKey('d')">d</button>
+                    <button class="key" onclick="typeKey('f')">f</button>
+                    <button class="key" onclick="typeKey('g')">g</button>
+                    <button class="key" onclick="typeKey('h')">h</button>
+                    <button class="key" onclick="typeKey('j')">j</button>
+                    <button class="key" onclick="typeKey('k')">k</button>
+                    <button class="key" onclick="typeKey('l')">l</button>
+                    <button class="key back" onclick="typeKey('BACKSPACE')">←</button>
+                </div>
+                <!-- Row 3 -->
+                <div class="keyboard-row">
+                    <button class="key-wide" id="capslock" onclick="toggleCaps()">Caps</button>
+                    <button class="key" onclick="typeKey('z')">z</button>
+                    <button class="key" onclick="typeKey('x')">x</button>
+                    <button class="key" onclick="typeKey('c')">c</button>
+                    <button class="key" onclick="typeKey('v')">v</button>
+                    <button class="key" onclick="typeKey('b')">b</button>
+                    <button class="key" onclick="typeKey('n')">n</button>
+                    <button class="key" onclick="typeKey('m')">m</button>
+                    <button class="key-wide clear-all" onclick="clearText()">Clear All</button>
+                </div>
+                <!-- Row 4 (Spacebar) -->
+                <div class="keyboard-row">
+                    <button class="key-space" onclick="typeKey(' ')">Space</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="script.js"></script>
+    </body>
+    </html>

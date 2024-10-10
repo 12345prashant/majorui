@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style_for_speechToText.css">
+</head>
+<body>
+    <!-- MAIN CONTAINER -->
+    <div class="container-fluid">
+
+
+        <!-- LEFT COLUMN-->
+        <div class="fav-tasks">
+            <h5>Daily Needs</h5>
+            <ul>
+                <li>Yes</li>
+                <li>No</li>
+                <li>Drink water</li>
+                <li>Washroom </li>
+                <li>Itching</li>
+                <li>Turn my body </li>
+                <li>Fan speed increase/decrease</li>
+                <li>Turn on/off lights</li>
+                <li>Food</li>
+            </ul>
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="right-content">
+
+            <!-- POWER BUTTONS -->
+            <div class="top-buttons">
+                <button class="btn btn-danger" id="offButton"><i class="fa-solid fa-power-off"></i> OFF</button>
+                <button class="btn btn-warning" id="sleepButton"><i class="fa-solid fa-moon"></i> Sleep</button>
+                <!-- HIDDEN BUTTON -->
+                <div id="blackout" class="blackout">
+                    <button id="unlockButtonsleep" class="btn btn-warning">Wake up</button>
+                </div>
+                <button class="lock-button" id="lockButton"><i class="fa-solid fa-lock"></i> Lock</button>
+            </div>
+
+            <!-- EMERGENCY CONTACTS BUTTON -->
+            <div class="contacts-lock">
+                <div class="contacts">
+                    <button class="btn"><i class="fa-solid fa-phone"></i> Ramesh</button>
+                    <button class="btn"><i class="fa-solid fa-phone"></i> ShriDevi</button>
+                    <button class="btn"><i class="fa-solid fa-phone"></i> Caretaker</button>
+                    <button class="btn"><i class="fa-solid fa-bell"></i> Alert</button>
+                </div>
+            </div>
+
+            <!-- SPEECH TO TEXT SECTION -->
+            <div class="voice-input-component justify-content-center align-items-center">
+
+                <!-- CLICK BUTTON -->
+                <button id="voiceButton" class="voice-btn" onclick="toggleRecognition()">
+                    <i class="fa-solid fa-microphone"></i> Start Listening
+                </button>
+                
+                <!-- WAVE ANIMATION -->
+                <div class="listening-indicator" id="listeningIndicator">
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                </div>
+            
+                <!-- CONVERTED TEXT -->
+                <p id="recognizedText" class="recognized-text"></p>
+            </div>
+
+            <div class="keyboard-container">
+                
+                <!-- TEXT OUTPUT AND SPEAK IT LOUD -->
+                <div class="d-flex flex-row justify-content-center gap-2 align-items-center">
+                    
+                    <!-- SHOW KEYBOARD OUTPUT -->
+                    <input type="text" class="output form-control" id="output" placeholder="Type here..." readonly>
+
+                    <!-- READ WHAT IS TYPED -->
+                    <div class="voice-container">
+                        <img class="play-button" src="play-button.png" alt="Play" onclick="voice()">
+                    </div>
+                </div>
+                
+                <!-- KEYBOARD PREDICTIONS -->
+                <div id="predictions" class="predictions"></div>
+    
+                <!-- KEYBOARD IMPLEMENTATION -->
+                <div class="keyboard">
+                    <!-- Row 1 -->
+                    <div class="keyboard-row">
+                        <button class="key" onclick="typeKey('q')">q</button>
+                        <button class="key" onclick="typeKey('w')">w</button>
+                        <button class="key" onclick="typeKey('e')">e</button>
+                        <button class="key" onclick="typeKey('r')">r</button>
+                        <button class="key" onclick="typeKey('t')">t</button>
+                        <button class="key" onclick="typeKey('y')">y</button>
+                        <button class="key" onclick="typeKey('u')">u</button>
+                        <button class="key" onclick="typeKey('i')">i</button>
+                        <button class="key" onclick="typeKey('o')">o</button>
+                        <button class="key" onclick="typeKey('p')">p</button>
+                    </div>
+                    <!-- Row 2 -->
+                    <div class="keyboard-row">
+                        <button class="key" onclick="typeKey('a')">a</button>
+                        <button class="key" onclick="typeKey('s')">s</button>
+                        <button class="key" onclick="typeKey('d')">d</button>
+                        <button class="key" onclick="typeKey('f')">f</button>
+                        <button class="key" onclick="typeKey('g')">g</button>
+                        <button class="key" onclick="typeKey('h')">h</button>
+                        <button class="key" onclick="typeKey('j')">j</button>
+                        <button class="key" onclick="typeKey('k')">k</button>
+                        <button class="key" onclick="typeKey('l')">l</button>
+                        <button class="key back" onclick="typeKey('BACKSPACE')">←</button>
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="keyboard-row">
+                        <button class="key-wide" id="capslock" onclick="toggleCaps()">Caps</button>
+                        <button class="key" onclick="typeKey('z')">z</button>
+                        <button class="key" onclick="typeKey('x')">x</button>
+                        <button class="key" onclick="typeKey('c')">c</button>
+                        <button class="key" onclick="typeKey('v')">v</button>
+                        <button class="key" onclick="typeKey('b')">b</button>
+                        <button class="key" onclick="typeKey('n')">n</button>
+                        <button class="key" onclick="typeKey('m')">m</button>
+                        <button class="key-wide clear-all" onclick="clearText()">Clear All</button>
+                    </div>
+                    <!-- Row 4 (Spacebar) -->
+                    <div class="keyboard-row">
+                        <button class="key-space" onclick="typeKey(' ')">Space</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOR SYSTEM BUTTON OPERATIONS -->
+    <div>
+        <div id="blackout" class="fullscreen hidden"></div>
+        <div id="sleepAnimation" class="fullscreen hidden">
+            <div class="zzz">Zzz...</div>
+            <button id="wakeUpButton" class="wake-up-btn hidden">Wake Up</button>
+        </div>
+        <div id="lockScreen" class="fullscreen hidden blur-effect">
+            <button id="unlockButton" class="unlock-btn">Unlock</button>
+        </div>
+    </div>
+    
+    <!-- SCRIPT FILES -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="script_for_speechToText.js"></script>
+    <script src="https://kit.fontawesome.com/4fd6ce09b8.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e2e;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+/* keyboard part start */
+
+.keyboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+}
+
+.output {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1.5rem;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    background-color: #3a3a3a;
+    color: white;
+}
+
+.predictions {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.prediction {
+    padding: 8px 15px;
+    background-color: #61dafb;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.prediction:hover {
+    background-color: #21a1f1;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    width: 100%; /* Full width */
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.key {
+    padding: 15px;
+    background-color: #61dafb;
+    color: black;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    flex: 1;
+    min-width: 40px; /* Ensure minimum width */
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.key:hover {
+    background-color: #21a1f1;
+    transform: scale(1.05);
+}
+
+.key-wide {
+    flex: 2;
+    background: linear-gradient(145deg, #4e54c8, #8f94fb); /* Gradient background */
+    color: #ffffff;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5),
+                -6px -6px 12px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.key-wide:hover {
+    background: linear-gradient(145deg, #8f94fb, #4e54c8); /* Reverse gradient on hover */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5),
+                -6px -6px 12px rgba(255, 255, 255, 0.5);
+}
+
+.key-wide:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+}
+
+.clear-all{
+    background: linear-gradient(145deg, #b11b34, #f00c0c);
+}
+
+.clear-all:hover {
+    background: linear-gradient(145deg, #f85f5f, #860c21); /* Reverse gradient on hover */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5),
+                -6px -6px 12px rgba(255, 255, 255, 0.5);
+}
+
+.key-space {
+    flex: 5;
+    background: linear-gradient(145deg, #4a6f6c, #a1c0bd); 
+    color: rgb(239, 191, 191);
+    font-size: 1.4rem;
+    border-radius: 8px;
+    padding: 5px; 
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5),
+                -6px -6px 12px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.key-space:hover {
+    background: linear-gradient(145deg, #3b5b56, #8cb1a0); 
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5),
+                -6px -6px 12px rgba(255, 255, 255, 0.5);
+}
+
+.key-space:active {
+    transform: scale(0.95);
+}
+
+.back{
+    background: linear-gradient(145deg, #7a9800, #687e7c);
+}
+
+
+.key:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+    .output {
+        font-size: 1.2rem;
+    }
+
+    .key {
+        font-size: 1rem;
+    }
+
+    .prediction {
+        font-size: 1rem;
+    }
+}
+
+
+/* keyboard part end */
+
+
+/* body rest */
+
+
+.container-fluid {
+    height: 100%;
+    display: flex;
+}
+/* Left Column: Favorite Tasks Full Height */
+.fav-tasks {
+    background-color: #2b2b3b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 25%;
+    height: 95%;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+.fav-tasks h5 {
+    color: #f0a500;
+}
+.fav-tasks ul {
+    list-style-type: none;
+    padding: 0;
+}
+.fav-tasks ul li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #3b3b4b;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.fav-tasks ul li:hover {
+    background-color: #f0a500;
+    color: #000;
+}
+
+/* Right Column */
+.right-content {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Top buttons */
+.top-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.top-buttons button {
+    width: 100px;
+    border-radius: 8px;
+}
+.top-buttons button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Emergency contacts & lock */
+.contacts-lock {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.contacts {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    flex-grow: 1;
+}
+.contacts button {
+    background-color: #0a5d02;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    width: 120px;
+    border-radius: 10px;
+}
+.contacts button:hover {
+    background-color: #009e12;
+    box-shadow: 0 0 10px rgba(0, 161, 8, 0.3);
+}
+
+.lock-button {
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    width: 120px;
+    align-self: center;
+    border-radius: 10px;
+    margin-left: 20px;
+    transition: background-color 0.3s ease;
+}
+.lock-button:hover {
+    background-color: #5aa5ff;
+    box-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
+}
+
+
+/* animation part addition */
+/* Add these new styles to your existing CSS */
+
+/* Full screen blackout and blur effects */
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.5s ease; /* Transition effect */
+    z-index: 999; /* Make sure it's above other elements */
+}
+
+.blur {
+    filter: blur(5px); /* Blur effect */
+    transition: filter 0.5s ease; /* Transition for blur */
+}
+
+/* Button styles */
+.hidden {
+    display: none; /* Hide elements */
+}
+
+
+.play-button, .copy-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;    
+    margin: 10px;
+}
+
+.play-button:hover, .copy-icon:hover {
+    opacity: 0.7;
+}
+
+
+/* Fullscreen blackout and blur effects */
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 999;
+}
+
+.blur-effect {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+#sleepAnimation .zzz {
+    color: white;
+    font-size: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-20px);
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+}
+
+/* Unlock and Wake Up button */
+.wake-up-btn, .unlock-btn {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.wake-up-btn:hover, .unlock-btn:hover {
+    background-color: #ff5757;
+}
+
+
+.blackout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s;
+    display: none; /* Hide by default */
+    justify-content: center;
+    align-items: center;
+}
+.blackout.visible {
+    display: flex;
+    opacity: 1;
+}
+#unlockButtonsleep {
+    display: none; /* Hide by default */
+    padding: 10px 20px;
+    font-size: 24px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
